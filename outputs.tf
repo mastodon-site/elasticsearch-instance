@@ -16,5 +16,5 @@ output "elasticsearch_cluster_name" {
 }
 
 output "elasticsearch_cluster_hostname" {
-  value = ec_deployment.cluster.kibana.https_endpoint
+  value = trimsuffix(ec_deployment.cluster.kibana.https_endpoint, ":9243")
 }
