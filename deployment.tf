@@ -40,19 +40,10 @@ resource "ec_deployment_traffic_filter" "ingress" {
   region = var.elastic_region
   type   = "ip"
 
-  rule {
-    source = "51.159.151.176/32"
-  }
-
-  rule {
-    source = "51.159.154.111/32"
-  }
-
-  rule {
-    source = "51.159.130.233/32"
-  }
-
-  rule {
-    source = "51.159.152.215/32"
+  dynamic "rule" {
+    for_each = var.allowed_ingress_ips
+    content {
+      source = rule.value
+    }
   }
 }
