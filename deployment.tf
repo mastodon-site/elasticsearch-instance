@@ -1,11 +1,6 @@
-data "ec_stack" "latest" {
-  version_regex = "latest"
-  region        = var.elastic_region
-}
-
 resource "ec_deployment" "cluster" {
   name                   = var.elastic_cluster_name
-  version                = data.ec_stack.latest.version
+  version                = var.elastic_cluster_version
   region                 = var.elastic_region
   deployment_template_id = var.elastic_deployment_template_id
 
