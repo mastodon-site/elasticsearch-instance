@@ -3,6 +3,12 @@ variable "elastic_cluster_name" {
   type        = string
 }
 
+variable "elastic_cluster_version" {
+  description = "Elastic.co cluster version"
+  type        = string
+  default     = "8.17.1"
+}
+
 variable "elastic_deployment_template_id" {
   type    = string
   default = "aws-storage-optimized"
